@@ -1,0 +1,30 @@
+package: github.com/metral/memhog-operator
+import:
+- package: github.com/golang/glog
+- package: github.com/spf13/cobra
+  version: master
+- package: k8s.io/client-go
+  version: ^2.0.0
+  subpackages:
+  - kubernetes
+  - pkg/api
+  - pkg/api/errors
+  - pkg/api/meta
+  - pkg/api/unversioned
+  - pkg/api/v1
+  - pkg/apis/extensions/v1beta1
+  - pkg/runtime
+  - pkg/runtime/serializer
+  - rest
+  - tools/clientcmd
+- package: k8s.io/kubernetes
+  version: ^1.7.0-alpha.1
+  subpackages:
+  - pkg/util/logs
+- package: github.com/prometheus/client_golang
+  version: master
+  subpackages:
+  - api/prometheus/v1
+  - api
+- package: github.com/spf13/pflag
+  version: master
