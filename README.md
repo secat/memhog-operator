@@ -8,7 +8,9 @@ monitor its memory usage. If the memory consumption of the Pod crosses a
 threshold, it will be vertically autoscaled by the operator.
 
 Specifically, the operator will deploy a new copy of the Pod with a higher
-set of resource requests and limits, and then terminate the excessive, running Pod.
+set of resource requests and limit, and then terminate the original Pod.
+The details of the higher resources are held within an `AppMonitor`,
+a custom TPR.
 
 [memhog](https://github.com/metral/memhog): An example Pod that this operator would monitor.
 
@@ -25,7 +27,7 @@ The controller watches a Namespace for an `AppMonitor`, and for Pods that wish
 to be monitored (via Annotation). It then applies the operational
 thresholds and requirements declared in the `AppMonitor` onto the Pod.
 
-## Flow
+## Process
 
 * To monitor the Pod's resource memory consumption, the operator requires that the Pod have an annotation in its `spec.template.metadata` to associate itself with the `memhog-operator`.
 
@@ -50,7 +52,7 @@ thresholds and requirements declared in the `AppMonitor` onto the Pod.
           imagePullPolicy: Always
           resources:
             limits:
-              memory: 400Mi
+              memory: 384Mi
             requests:
               memory: 256Mi
           ...
@@ -79,7 +81,7 @@ e.g.:
   ...
   resources:
     limits:
-      memory: 800Mi
+      memory: 768Mi
     requests:
       memory: 512Mi
   ...
