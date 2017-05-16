@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: memhog-operator
-        image: quay.io/metral/memhog-operator:v0.0.1
+        image: quay.io/metral/memhog-operator:v0.0.2
         args:
           - --logtostderr=true
           - --prometheus-addr=http://prometheus.tectonic-system:9090
